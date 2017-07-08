@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Diamond</string>
+    <string name="menu">Menu</string>
+    <string name="preferences">SharedPreferences</string>
+    <string name="databases">Databases</string>
+    <string name="files">Files</string>
+    <string name="preference_details">Store private primitive data in key-value pairs.</string>
+    <string name="databases_details">Store structure data in a private database.</string>
+    <string name="files_details">Store private data on the device memory and public data on the shared external storage.</string>
+
+    <string name="save">Save</string>
+    <string name="value_1">Value 1</string>
+    <string name="value_2">Value 2</string>
+    <string name="value_3">Value 3</string>
+    <string name="details">Details</string>
+
+    <string name="home_intro">Exploit all methods to save data on a device.</string>
+
+    <string name="singlePreference">Single</string>
+    <string name="multiplePreferences">Multiple</string>
+
+    <string name="multiple_preference_id">com.diamond.diamond.MULTIPLE_PREFERENCES</string>
+    <string name="value_1_id">com.diamond.diamond.VALUE_1</string>
+    <string name="value_2_id">com.diamond.diamond.VALUE_2</string>
+    <string name="value_3_id">com.diamond.diamond.VALUE_3</string>
+    <string name="no_data">No Data</string>
+
+</resources>

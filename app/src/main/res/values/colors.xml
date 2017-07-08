@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2d56b4</color>
+    <color name="colorPrimaryLight">#6882e7</color>
+    <color name="colorPrimaryDark">#002e84</color>
+
+    <color name="colorSecondary">#1a237e</color>
+    <color name="colorSecondaryLight">#534bae</color>
+    <color name="colorSecondaryDark">#000051</color>
+
+
+    <color name="textAppName">#e07412</color>
+    <color name="textNormal">#000000</color>
+    <color name="textColorPrimary">#ffffff</color>
+    <color name="textColorSecondary">#ffffff</color>
+    <color name="textDetails">#d7ccc8</color>
+    <color name="textListTitle">#5a5a5a</color>
+    <color name="textListValue">#828282</color>
+
+    <color name="colorAccent">#828282</color>
+    <color name="backgroundColor">#EBEFF1</color>
+    <color name="cardColor">#ffffff</color>
+
+
+
+</resources>
