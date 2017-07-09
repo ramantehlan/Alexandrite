@@ -22,11 +22,22 @@ public class Files extends AppCompatActivity {
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
 
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
+        if(Environment.MEDIA_MOUNTED.equals(state)) {
             return true;
         }
         return false;
     }
+
+    // For reading external storage
+    public boolean isExternalStorageReadable(){
+        String state = Environment.getExternalStorageState();
+
+        if(Environment.MEDIA_MOUNTED.equals(state) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)){
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +90,13 @@ public class Files extends AppCompatActivity {
         String path = this.getFilesDir().toString() + "/userfiles/check.txt";
         File f = new File(path);
         if (f.mkdirs()) {
-            // Toast.makeText(getBaseContext() , "created " + path , Toast.LENGTH_LONG).show();
+             Toast.makeText(getBaseContext() , "created " + path , Toast.LENGTH_LONG).show();
         } else {
             // Toast.makeText(getBaseContext() , "failed" , Toast.LENGTH_LONG).show();
             f.delete();
         }
+
+
 
 
         // This is to get list of all the files and directories
@@ -91,8 +104,9 @@ public class Files extends AppCompatActivity {
         File l = new File(full);
         String[] fileDir = l.list();
         String list = "";
-        for (int a = 0; a < fileDir.length; a++) {
-            list = list + "\n" + fileDir[a];
+
+        for (String name : fileDir) {
+            list = list + "\n" + name;
         }
 
         display.setText(list);
