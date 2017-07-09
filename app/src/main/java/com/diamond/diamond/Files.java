@@ -20,7 +20,7 @@ public class Files extends AppCompatActivity {
         setContentView(R.layout.activity_files);
 
 
-           Toast.makeText(getBaseContext() , this.getFilesDir().toString() , Toast.LENGTH_SHORT).show();
+           //Toast.makeText(getBaseContext() , this.getFilesDir().toString() , Toast.LENGTH_SHORT).show();
 
 
       // Comman variables
