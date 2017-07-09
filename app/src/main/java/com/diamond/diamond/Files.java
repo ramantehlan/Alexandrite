@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +15,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Files extends AppCompatActivity {
+
+    private static final String ERROR_TAG = "files.error";
+
 
     /**
      * To check if external storage is mounted or not
@@ -38,6 +42,26 @@ public class Files extends AppCompatActivity {
         return false;
     }
 
+    // This won't be deleted once the user will delete the app
+    public File getPublicAlbumStorageDir(String albumName) {
+    // This is to create public picture directory in external storage
+    File albumFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) , albumName);
+
+   if(!albumFile.mkdirs()){
+        Log.e(ERROR_TAG , "Directory not created");
+    }
+        return albumFile;
+    }
+
+    // This will be deleted once user will delete the app
+    public File getPrivateAlbumStorageDir(Context context , String albumName){
+        File albumFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES) , albumName);
+
+        if(!albumFile.mkdir()){
+            Log.e(ERROR_TAG , "Directory not created");
+        }
+        return albumFile;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +72,7 @@ public class Files extends AppCompatActivity {
         //Toast.makeText(getBaseContext() , this.getFilesDir().toString() , Toast.LENGTH_SHORT).show();
 
 
-        // Comman variables
+        // Common variables
         String filename = "newfile.txt";
         FileOutputStream writeToFile;
         FileInputStream readFromFile;
@@ -90,7 +114,8 @@ public class Files extends AppCompatActivity {
         String path = this.getFilesDir().toString() + "/userfiles/check.txt";
         File f = new File(path);
         if (f.mkdirs()) {
-             Toast.makeText(getBaseContext() , "created " + path , Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext() , "created " + path , Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext() , Long.toString(f.getFreeSpace()) , Toast.LENGTH_LONG).show();
         } else {
             // Toast.makeText(getBaseContext() , "failed" , Toast.LENGTH_LONG).show();
             f.delete();
