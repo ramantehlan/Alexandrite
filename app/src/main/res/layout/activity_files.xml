@@ -84,21 +84,36 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/mainTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/directory"
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/textListTitle"
-                android:textSize="14sp"
+                android:textColor="@color/textNormal"
+                android:textSize="15sp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/local"
+                android:textColor="@color/textListTitle"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/mainTitle"
+                app:layout_constraintRight_toRightOf="@+id/mainTitle"
+                app:layout_constraintTop_toBottomOf="@+id/mainTitle"
+                app:layout_constraintHorizontal_bias="0.0" />
 
             <TextView
                 android:id="@+id/subTitle"
@@ -106,29 +121,74 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="0dp"
                 android:text="@string/folder"
+                android:textColor="@color/textListValue"
                 android:textSize="10sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="@+id/title"
-                app:layout_constraintRight_toRightOf="@+id/title"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
+                app:layout_constraintLeft_toLeftOf="@+id/textView18"
+                app:layout_constraintRight_toRightOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
             <TextView
-                android:id="@+id/directoryTree"
+                android:id="@+id/localDirectoryTree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginTop="0dp"
                 android:lineSpacingExtra="3sp"
                 android:text="@string/no_data"
                 android:textColor="@color/textListValue"
                 android:textSize="12sp"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/subTitle"
+                app:layout_constraintRight_toRightOf="@+id/subTitle"
                 app:layout_constraintTop_toBottomOf="@+id/subTitle" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:text="@string/sdcard"
+                android:textColor="@color/textListTitle"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/textView18"
+                app:layout_constraintRight_toRightOf="@+id/textView18"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/localDirectoryTree"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="0dp"
+                android:text="TextView"
+                android:textColor="@color/textListValue"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toLeftOf="@+id/textView20"
+                app:layout_constraintRight_toRightOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/textView20"
+                tools:text="@string/folder" />
+
+            <TextView
+                android:id="@+id/sdDirectoryTree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="0dp"
+                android:lineSpacingExtra="3sp"
+                android:text="@string/no_data"
+                android:textColor="@color/textListValue"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@+id/textView21"
+                app:layout_constraintRight_toRightOf="@+id/textView21"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

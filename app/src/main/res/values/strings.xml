@@ -28,7 +28,9 @@
     <string name="file_name">File Name</string>
     <string name="file_content">File Content</string>
 
-    <string name="directory">Directories</string>
+    <string name="directory">Storage Directories</string>
     <string name="folder">Root:</string>
+    <string name="local">Local</string>
+    <string name="sdcard">SdCard</string>
 
 </resources>

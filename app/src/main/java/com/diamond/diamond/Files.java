@@ -21,11 +21,11 @@ public class Files extends AppCompatActivity {
         setContentView(R.layout.activity_files);
 
         // Once the view is created, now we can assign the directoryTree
-        directoryTree = (TextView) findViewById(R.id.directoryTree);
+        directoryTree = (TextView) findViewById(R.id.localDirectoryTree);
         heading = (TextView) findViewById(R.id.subTitle);
         directoryTree.setText(displayDirectoryTree(this.getFilesDir().getParent()));
         // Just to print some properties about the main directory
-        String property = "";
+        String property = "\n";
         property += "[Last Modified: " + Long.toString(this.getFilesDir().lastModified()) + "]";
         property += "[Free Space: " + Long.toString(this.getFilesDir().getFreeSpace()) + "/" + Long.toString(this.getFilesDir().getTotalSpace()) + "]";
         heading.setText(heading.getText().toString() + this.getFilesDir().getParent() + property);
@@ -47,8 +47,8 @@ public class Files extends AppCompatActivity {
             list += (tempDir.isDirectory()) ? "[Dir]" : "";
             list += (tempDir.isFile()) ? "[File]" : "";
             list += (tempDir.canRead()) ? "[R]" : "[NR]";
-            list += (tempDir.isHidden()) ? "[Hidden]" : "[Not Hidden]";
-            list += (tempDir.exists()) ? "[Existing]" : "[Non Existing]";
+            //list += (tempDir.isHidden()) ? "[Hidden]" : "[Not Hidden]";
+            //list += (tempDir.exists()) ? "[Existing]" : "[Non Existing]";
 
         }
 
