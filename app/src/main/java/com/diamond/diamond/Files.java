@@ -43,12 +43,13 @@ public class Files extends AppCompatActivity {
         for (String tempDirName : fileDirs) {
 
             File tempDir = new File(tempDirName);
-            list += "\n> " + tempDirName;
+            list += "> " + tempDirName;
             list += (tempDir.isDirectory()) ? "[Dir]" : "";
             list += (tempDir.isFile()) ? "[File]" : "";
             list += (tempDir.canRead()) ? "[R]" : "[NR]";
             //list += (tempDir.isHidden()) ? "[Hidden]" : "[Not Hidden]";
             //list += (tempDir.exists()) ? "[Existing]" : "[Non Existing]";
+            list += "\n";
 
         }
 
