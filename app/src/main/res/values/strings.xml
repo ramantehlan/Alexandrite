@@ -25,4 +25,10 @@
     <string name="value_3_id">com.diamond.diamond.VALUE_3</string>
     <string name="no_data">No Data</string>
 
+    <string name="file_name">File Name</string>
+    <string name="file_content">File Content</string>
+
+    <string name="directory">Directories</string>
+    <string name="folder">Root:</string>
+
 </resources>
