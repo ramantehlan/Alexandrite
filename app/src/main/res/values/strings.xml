@@ -30,7 +30,7 @@
 
     <string name="directory">Storage Directories</string>
     <string name="folder">Root:</string>
-    <string name="local">Local</string>
-    <string name="sdcard">SdCard</string>
+    <string name="local">Internal</string>
+    <string name="sdcard">External</string>
 
 </resources>

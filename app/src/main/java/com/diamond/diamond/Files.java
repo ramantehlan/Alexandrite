@@ -1,9 +1,11 @@
 package com.diamond.diamond;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
 
 import java.io.File;
 
@@ -11,9 +13,6 @@ public class Files extends AppCompatActivity {
 
     // This is the tag to be used for creating a Log
     //private static final String FILES_TAG = "tag.files";
-    // This is the view to display the list/tree of directories
-    private TextView heading;
-    private TextView directoryTree;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,14 +20,32 @@ public class Files extends AppCompatActivity {
         setContentView(R.layout.activity_files);
 
         // Once the view is created, now we can assign the directoryTree
-        directoryTree = (TextView) findViewById(R.id.localDirectoryTree);
-        heading = (TextView) findViewById(R.id.subTitle);
-        directoryTree.setText(displayDirectoryTree(this.getFilesDir().getParent()));
-        // Just to print some properties about the main directory
+        TextView directoryTree = (TextView) findViewById(R.id.localDirectoryTree);
+        TextView directoryTree2 = (TextView) findViewById(R.id.sdDirectoryTree);
+        TextView heading = (TextView) findViewById(R.id.subTitle);
+        TextView heading2 = (TextView) findViewById(R.id.subTitle2);
         String property = "\n";
-        property += "[Last Modified: " + Long.toString(this.getFilesDir().lastModified()) + "]";
-        property += "[Free Space: " + Long.toString(this.getFilesDir().getFreeSpace()) + "/" + Long.toString(this.getFilesDir().getTotalSpace()) + "]";
-        heading.setText(heading.getText().toString() + this.getFilesDir().getParent() + property);
+        String property2 = "\n";
+        //
+        File root = this.getFilesDir();
+        File root2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+
+        // For Internal Storage
+        directoryTree.setText(displayDirectoryTree(root.getAbsolutePath()));
+        // Just to print some properties about the main directory
+        property += "[Last Modified: " + Long.toString(root.lastModified()) + "]";
+        property += "[Free Space: " + Long.toString(root.getFreeSpace()) + "/" + Long.toString(root.getTotalSpace()) + "]";
+        heading.setText(heading.getText().toString() + root.getParent() + property);
+
+        // For External Storage
+        directoryTree2.setText(displayDirectoryTree(root2.getParent()));
+        // Just to print some properties about the main directory
+        property2 += "[Last Modified: " + Long.toString(root2.lastModified()) + "]";
+        property2 += "[Free Space: " + Long.toString(root2.getFreeSpace()) + "/" + Long.toString(root2.getTotalSpace()) + "]";
+        heading2.setText(heading2.getText().toString() + root2.getParent() + property2);
+
+
 
     }
 
