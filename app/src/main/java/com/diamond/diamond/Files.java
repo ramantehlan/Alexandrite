@@ -24,26 +24,31 @@ public class Files extends AppCompatActivity {
         TextView directoryTree2 = (TextView) findViewById(R.id.sdDirectoryTree);
         TextView heading = (TextView) findViewById(R.id.subTitle);
         TextView heading2 = (TextView) findViewById(R.id.subTitle2);
+
+        // Properties
         String property = "\n";
         String property2 = "\n";
-        //
+
+        // Files
         File root = this.getFilesDir();
-        File root2 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File root2 = Environment.getExternalStorageDirectory();
+        String rootString = root.getParent();
+        String rootString2 = root2.getPath();
 
 
         // For Internal Storage
-        directoryTree.setText(displayDirectoryTree(root.getAbsolutePath()));
+        directoryTree.setText(displayDirectoryTree(rootString));
         // Just to print some properties about the main directory
         property += "[Last Modified: " + Long.toString(root.lastModified()) + "]";
         property += "[Free Space: " + Long.toString(root.getFreeSpace()) + "/" + Long.toString(root.getTotalSpace()) + "]";
-        heading.setText(heading.getText().toString() + root.getParent() + property);
+        heading.setText(heading.getText().toString() + rootString + property);
 
         // For External Storage
-        directoryTree2.setText(displayDirectoryTree(root2.getParent()));
+        directoryTree2.setText(displayDirectoryTree( rootString2));
         // Just to print some properties about the main directory
         property2 += "[Last Modified: " + Long.toString(root2.lastModified()) + "]";
         property2 += "[Free Space: " + Long.toString(root2.getFreeSpace()) + "/" + Long.toString(root2.getTotalSpace()) + "]";
-        heading2.setText(heading2.getText().toString() + root2.getParent() + property2);
+        heading2.setText(heading2.getText().toString() +  rootString2 + property2);
 
 
 

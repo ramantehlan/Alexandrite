@@ -32,7 +32,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="0dp" />
 
         <EditText
             android:id="@+id/editText2"
@@ -171,14 +172,13 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
                 android:layout_marginTop="0dp"
-                android:text="TextView"
+                android:text="@string/folder"
                 android:textColor="@color/textListValue"
                 android:textSize="10sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/title2"
                 app:layout_constraintRight_toRightOf="@+id/title2"
-                app:layout_constraintTop_toBottomOf="@+id/title2"
-                tools:text="@string/folder"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/title2" />
 
             <TextView
                 android:id="@+id/sdDirectoryTree"
