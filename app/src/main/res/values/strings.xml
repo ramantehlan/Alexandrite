@@ -31,7 +31,8 @@
     <string name="directory">Storage Directories</string>
     <string name="folder">Root:</string>
     <string name="local">Internal</string>
-    <string name="sdcard">External</string>
+    <string name="sdcard_public">External Public</string>
+    <string name="sdcard_private">External Private</string>
 
     <string name="external_readable">External Readable: </string>
     <string name="external_writable">External Writable: </string>

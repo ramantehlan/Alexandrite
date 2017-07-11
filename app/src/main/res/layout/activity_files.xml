@@ -111,7 +111,8 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/local"
                 android:textColor="@color/textListTitle"
-                android:textSize="14sp"
+                android:textSize="13sp"
+                android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/mainTitle"
                 app:layout_constraintRight_toRightOf="@+id/mainTitle"
@@ -152,9 +153,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/sdcard"
+                android:text="@string/sdcard_private"
                 android:textColor="@color/textListTitle"
-                android:textSize="14sp"
+                android:textSize="13sp"
+                android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/title"
                 app:layout_constraintRight_toRightOf="@+id/title"
@@ -173,7 +175,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/title2" />
 
             <TextView
-                android:id="@+id/sdDirectoryTree"
+                android:id="@+id/sdPrivateDirectoryTree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -189,6 +191,51 @@
                 app:layout_constraintLeft_toLeftOf="@+id/subTitle2"
                 app:layout_constraintRight_toRightOf="@+id/subTitle2"
                 app:layout_constraintTop_toBottomOf="@+id/subTitle2" />
+
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sdcard_public"
+                android:textColor="@color/textListTitle"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@+id/title2"
+                app:layout_constraintRight_toRightOf="@+id/title2"
+                app:layout_constraintTop_toBottomOf="@+id/sdPrivateDirectoryTree" />
+
+            <TextView
+                android:id="@+id/subTitle3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/folder"
+                android:textColor="@color/textListValue"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toLeftOf="@+id/title3"
+                app:layout_constraintRight_toRightOf="@+id/title3"
+                app:layout_constraintTop_toBottomOf="@+id/title3" />
+
+            <TextView
+                android:id="@+id/sdPublicDirectoryTree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="3sp"
+                android:text="@string/no_data"
+                android:textColor="@color/textListValue"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@+id/subTitle3"
+                app:layout_constraintRight_toRightOf="@+id/subTitle3"
+                app:layout_constraintTop_toBottomOf="@+id/subTitle3" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -214,7 +261,7 @@
                     android:paddingLeft="8dp"
                     android:paddingTop="5dp"
                     android:text="@string/external_writable"
-                    android:textSize="12dp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/exRead"
@@ -223,7 +270,7 @@
                     android:paddingLeft="8dp"
                     android:paddingTop="5dp"
                     android:text="@string/external_readable"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="346dp" />
 
