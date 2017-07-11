@@ -13,6 +13,8 @@ import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
 
 public class Files extends AppCompatActivity {
 
+    // Tag to log
+    //private static final String FILES_TAG = "tag.files";
     // Array of TextView to display the directory list
     public TextView[] directoriesView = {null};
     // Array of TextView to display properties of rootFiles
@@ -28,6 +30,7 @@ public class Files extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_files);
 
+
         directoriesView = new TextView[]{(TextView) findViewById(R.id.localDirectoryTree),
                 (TextView) findViewById(sdPrivateDirectoryTree),
                 (TextView) findViewById(sdPublicDirectoryTree)
@@ -40,7 +43,7 @@ public class Files extends AppCompatActivity {
 
         properties = new String[]{"internal", "external", "external"};
 
-        rootFiles = new File[]{this.getFilesDir().getParentFile(),
+        rootFiles = new File[]{ this.getFilesDir().getParentFile(),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
