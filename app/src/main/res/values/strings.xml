@@ -39,4 +39,6 @@
     <string name="external_cache">External Cache: </string>
     <string name="internal_cache">Internal Cache: </string>
 
+    <string name="external_storage_error">External storage not readable or not attached</string>
+
 </resources>

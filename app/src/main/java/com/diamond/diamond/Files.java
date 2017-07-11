@@ -28,43 +28,34 @@ public class Files extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_files);
 
-
-        TextView[] directoriesView = {(TextView) findViewById(R.id.localDirectoryTree),
+        directoriesView = new TextView[]{(TextView) findViewById(R.id.localDirectoryTree),
                 (TextView) findViewById(sdPrivateDirectoryTree),
                 (TextView) findViewById(sdPublicDirectoryTree)
         };
 
-
-        TextView[] propertiesView = {(TextView) findViewById(R.id.subTitle),
+        propertiesView = new TextView[]{(TextView) findViewById(R.id.subTitle),
                 (TextView) findViewById(R.id.subTitle2),
                 (TextView) findViewById(R.id.subTitle3)
         };
 
+        properties = new String[]{"internal", "external", "external"};
 
-        String[] properties = {"internal", "external", "external"};
-
-
-        File[] rootFiles = {this.getFilesDir().getParentFile(),
+        rootFiles = new File[]{this.getFilesDir().getParentFile(),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
 
         for (int i = 0; i < rootFiles.length; i++) {
-
-            // To display the directories of rootFile by calling displayDirectoryTree function
-            directoriesView[i].setText(displayDirectoryTree(rootFiles[i].toString()));
-
-            // To get properties of rootFile
-            // We also need to check properties since it's first purpose of telling us about storage is over
-            properties[i] = "\n";
-            properties[i] += "[Last Modified: " + Long.toString(rootFiles[i].lastModified()) + "]";
-            properties[i] += "[Free Space: " + Long.toString(rootFiles[i].getFreeSpace()) + "/" + Long.toString(rootFiles[i].getTotalSpace()) + "]";
-
-            // To print properties
-            propertiesView[i].setText(propertiesView[i].getText().toString() + rootFiles[i].toString() + properties[i]);
-
+            if(properties[i].equals("external")){
+                if(this.isExternalStorageReadable()){
+                    this.displayDirectoryTree(i);
+                }else {
+                    directoriesView[i].setText(getResources().getText(R.string.external_storage_error));
+                }
+            }else {
+                this.displayDirectoryTree(i);
+            }
         }
-
 
         // This is to update the external board
         TextView exRead = (TextView) findViewById(R.id.exRead);
@@ -77,12 +68,11 @@ public class Files extends AppCompatActivity {
         String exWritable = exWrite.getText().toString();
         exWritable = (isExternalStorageWritable()) ? exWritable + " Writable" : exWritable + " Not Writable";
         exWrite.setText(exWritable);
-
     }
 
 
     // This function is called to display the directories
-    public String displayDirectoryTree(String path) {
+    public String getDirectoryTree(String path) {
         File file = new File(path);
         String[] fileDirs = file.list();
         String list = "";
@@ -118,6 +108,20 @@ public class Files extends AppCompatActivity {
     // Check if external storage is available for at least read
     public boolean isExternalStorageReadable() {
        return (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()));
+    }
+
+    public void displayDirectoryTree(int position){
+        // To display the directories of rootFile by calling displayDirectoryTree function
+        directoriesView[position].setText(this.getDirectoryTree(rootFiles[position].toString()));
+
+        // To get properties of rootFile
+        // We also need to check properties since it's first purpose of telling us about storage is over
+        properties[position] = "\n";
+        properties[position] += "[Last Modified: " + Long.toString(rootFiles[position].lastModified()) + "]";
+        properties[position] += "[Free Space: " + Long.toString(rootFiles[position].getFreeSpace()) + "/" + Long.toString(rootFiles[position].getTotalSpace()) + "]";
+
+        // To print properties
+        propertiesView[position].setText(propertiesView[position].getText().toString() + rootFiles[position].toString() + properties[position]);
     }
 
 }
