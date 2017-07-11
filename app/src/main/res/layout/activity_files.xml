@@ -243,7 +243,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
@@ -271,11 +271,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:paddingLeft="8dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="3dp"
                     android:text="@string/external_readable"
                     android:textSize="12sp"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="346dp" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/internal_cache"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="4dp"
+                    android:text="@string/external_cache"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 

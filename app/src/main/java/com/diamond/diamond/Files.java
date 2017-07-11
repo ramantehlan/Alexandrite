@@ -8,60 +8,63 @@ import android.widget.TextView;
 
 import java.io.File;
 
+import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
+import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
+
 public class Files extends AppCompatActivity {
 
-    // This is the tag to be used for creating a Log
-    //private static final String FILES_TAG = "tag.files";
+    // Array of TextView to display the directory list
+    public TextView[] directoriesView = {null};
+    // Array of TextView to display properties of rootFiles
+    public TextView[] propertiesView;
+    // Array of String to store properties
+    // This is also used to indicate if rootFile is Internal or External storage
+    public String[] properties;
+    // Array of Files to store rootFiles
+    public File[] rootFiles;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_files);
 
-        // Once the view is created, now we can assign the directoryTree
-        TextView directoryTree = (TextView) findViewById(R.id.localDirectoryTree);
-        TextView sdPrivateDirectoryTree = (TextView) findViewById(R.id.sdPrivateDirectoryTree);
-        TextView sdPublicDirectoryTree = (TextView) findViewById(R.id.sdPublicDirectoryTree);
-        TextView heading = (TextView) findViewById(R.id.subTitle);
-        TextView heading2 = (TextView) findViewById(R.id.subTitle2);
-        TextView heading3 = (TextView) findViewById(R.id.subTitle3);
 
-        // Properties
-        String property = "\n";
-        String property2 = "\n";
-        String property3 = "\n";
+        TextView[] directoriesView = {(TextView) findViewById(R.id.localDirectoryTree),
+                (TextView) findViewById(sdPrivateDirectoryTree),
+                (TextView) findViewById(sdPublicDirectoryTree)
+        };
 
-        // Files
-        File root = this.getFilesDir().getParentFile();
-        File root2 = this.getExternalFilesDir(null).getParentFile();
-        File root3 = Environment.getExternalStorageDirectory();
-        String rootString = root.getPath();
-        String rootString2 = root2.getPath();
-        String rootString3 = root3.getPath();
 
-        // For Internal Storage
-        directoryTree.setText(displayDirectoryTree(rootString));
-        // Just to print some properties about the main directory
-        property += "[Last Modified: " + Long.toString(root.lastModified()) + "]";
-        property += "[Free Space: " + Long.toString(root.getFreeSpace()) + "/" + Long.toString(root.getTotalSpace()) + "]";
-        heading.setText(heading.getText().toString() + rootString + property);
+        TextView[] propertiesView = {(TextView) findViewById(R.id.subTitle),
+                (TextView) findViewById(R.id.subTitle2),
+                (TextView) findViewById(R.id.subTitle3)
+        };
 
-        // For External Storage
-        if (isExternalStorageReadable()) {
-            // This is to print private directory files
-            sdPrivateDirectoryTree.setText(displayDirectoryTree(rootString2));
-            // Just to print some properties about the main directory
-            property2 += "[Last Modified: " + Long.toString(root2.lastModified()) + "]";
-            property2 += "[Free Space: " + Long.toString(root2.getFreeSpace()) + "/" + Long.toString(root2.getTotalSpace()) + "]";
-            heading2.setText(heading2.getText().toString() + rootString2 + property2);
 
-            // This is to print public directory files
-            sdPublicDirectoryTree.setText(displayDirectoryTree(rootString3));
-            // Just to print some properties about the main directory
-            property3 += "[Last Modified: " + Long.toString(root3.lastModified()) + "]";
-            property3 += "[Free Space: " + Long.toString(root3.getFreeSpace()) + "/" + Long.toString(root3.getTotalSpace()) + "]";
-            heading3.setText(heading3.getText().toString() + rootString3 + property3);
+        String[] properties = {"internal", "external", "external"};
+
+
+        File[] rootFiles = {this.getFilesDir().getParentFile(),
+                this.getExternalFilesDir(null).getParentFile(),
+                Environment.getExternalStorageDirectory()
+        };
+
+        for (int i = 0; i < rootFiles.length; i++) {
+
+            // To display the directories of rootFile by calling displayDirectoryTree function
+            directoriesView[i].setText(displayDirectoryTree(rootFiles[i].toString()));
+
+            // To get properties of rootFile
+            // We also need to check properties since it's first purpose of telling us about storage is over
+            properties[i] = "\n";
+            properties[i] += "[Last Modified: " + Long.toString(rootFiles[i].lastModified()) + "]";
+            properties[i] += "[Free Space: " + Long.toString(rootFiles[i].getFreeSpace()) + "/" + Long.toString(rootFiles[i].getTotalSpace()) + "]";
+
+            // To print properties
+            propertiesView[i].setText(propertiesView[i].getText().toString() + rootFiles[i].toString() + properties[i]);
+
         }
+
 
         // This is to update the external board
         TextView exRead = (TextView) findViewById(R.id.exRead);
@@ -99,27 +102,22 @@ public class Files extends AppCompatActivity {
         }
 
         // finally return the list of directories
-        if (list != "") {
+        if (!list.equals("")) {
             return list;
         } else {
             return "Empty Directory";
         }
     }
 
+
     // Check if external storage is available for read and write
     public boolean isExternalStorageWritable() {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            return true;
-        }
-        return false;
+        return  (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()));
     }
 
     // Check if external storage is available for at least read
     public boolean isExternalStorageReadable() {
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
-            return true;
-        }
-        return false;
+       return (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()));
     }
 
 }

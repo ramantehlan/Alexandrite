@@ -36,5 +36,7 @@
 
     <string name="external_readable">External Readable: </string>
     <string name="external_writable">External Writable: </string>
+    <string name="external_cache">External Cache: </string>
+    <string name="internal_cache">Internal Cache: </string>
 
 </resources>
