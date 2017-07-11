@@ -32,8 +32,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="0dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editText2"
@@ -71,16 +70,15 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/cardColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginBottom="16dp">
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -91,8 +89,10 @@
                 android:id="@+id/mainTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/directory"
                 android:textAlignment="center"
@@ -108,38 +108,35 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/local"
                 android:textColor="@color/textListTitle"
                 android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/mainTitle"
                 app:layout_constraintRight_toRightOf="@+id/mainTitle"
-                app:layout_constraintTop_toBottomOf="@+id/mainTitle"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <TextView
                 android:id="@+id/subTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="-1dp"
                 android:text="@string/folder"
                 android:textColor="@color/textListValue"
                 android:textSize="10sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/title"
                 app:layout_constraintRight_toRightOf="@+id/title"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <TextView
                 android:id="@+id/localDirectoryTree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:lineSpacingExtra="3sp"
                 android:text="@string/no_data"
@@ -154,24 +151,19 @@
                 android:id="@+id/title2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/sdcard"
                 android:textColor="@color/textListTitle"
                 android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/title"
                 app:layout_constraintRight_toRightOf="@+id/title"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/localDirectoryTree"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/localDirectoryTree" />
 
             <TextView
                 android:id="@+id/subTitle2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="0dp"
                 android:text="@string/folder"
                 android:textColor="@color/textListValue"
                 android:textSize="10sp"
@@ -184,17 +176,59 @@
                 android:id="@+id/sdDirectoryTree"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:lineSpacingExtra="3sp"
                 android:text="@string/no_data"
                 android:textColor="@color/textListValue"
                 android:textSize="12sp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="@+id/subTitle2"
                 app:layout_constraintRight_toRightOf="@+id/subTitle2"
-                app:layout_constraintTop_toBottomOf="@+id/subTitle2"
-                app:layout_constraintHorizontal_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/subTitle2" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/backgroundColor"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@+id/mainTitle"
+                app:layout_constraintRight_toRightOf="@+id/mainTitle"
+                app:layout_constraintTop_toBottomOf="@+id/mainTitle">
+
+                <TextView
+                    android:id="@+id/exWrite"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/external_writable"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/exRead"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/external_readable"
+                    android:textSize="12dp"
+                    tools:layout_editor_absoluteX="8dp"
+                    tools:layout_editor_absoluteY="346dp" />
+
+            </LinearLayout>
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

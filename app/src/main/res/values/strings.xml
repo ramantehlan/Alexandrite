@@ -33,4 +33,7 @@
     <string name="local">Internal</string>
     <string name="sdcard">External</string>
 
+    <string name="external_readable">External Readable: </string>
+    <string name="external_writable">External Writable: </string>
+
 </resources>

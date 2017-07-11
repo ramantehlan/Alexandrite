@@ -30,11 +30,10 @@ public class Files extends AppCompatActivity {
         String property2 = "\n";
 
         // Files
-        File root = this.getFilesDir();
-        File root2 = Environment.getExternalStorageDirectory();
-        String rootString = root.getParent();
+        File root = this.getFilesDir().getParentFile();
+        File root2 = this.getExternalFilesDir(null).getParentFile();
+        String rootString = root.getPath();
         String rootString2 = root2.getPath();
-
 
         // For Internal Storage
         directoryTree.setText(displayDirectoryTree(rootString));
@@ -44,13 +43,25 @@ public class Files extends AppCompatActivity {
         heading.setText(heading.getText().toString() + rootString + property);
 
         // For External Storage
-        directoryTree2.setText(displayDirectoryTree( rootString2));
-        // Just to print some properties about the main directory
-        property2 += "[Last Modified: " + Long.toString(root2.lastModified()) + "]";
-        property2 += "[Free Space: " + Long.toString(root2.getFreeSpace()) + "/" + Long.toString(root2.getTotalSpace()) + "]";
-        heading2.setText(heading2.getText().toString() +  rootString2 + property2);
+        if (isExternalStorageReadable()) {
+            directoryTree2.setText(displayDirectoryTree(rootString2));
+            // Just to print some properties about the main directory
+            property2 += "[Last Modified: " + Long.toString(root2.lastModified()) + "]";
+            property2 += "[Free Space: " + Long.toString(root2.getFreeSpace()) + "/" + Long.toString(root2.getTotalSpace()) + "]";
+            heading2.setText(heading2.getText().toString() + rootString2 + property2);
+        }
 
+        // This is to update the external board
+        TextView exRead = (TextView) findViewById(R.id.exRead);
+        TextView exWrite = (TextView) findViewById(R.id.exWrite);
 
+        String exReadable = exRead.getText().toString();
+        exReadable = (isExternalStorageReadable())? exReadable + " Readable" : exReadable + " Not Readable";
+        exRead.setText(exReadable);
+
+        String exWritable = exWrite.getText().toString();
+        exWritable = (isExternalStorageWritable())? exWritable + " Writable" : exWritable + " Not Writable";
+        exWrite.setText(exWritable);
 
     }
 
@@ -79,5 +90,20 @@ public class Files extends AppCompatActivity {
         return list;
     }
 
+    // Check if external storage is available for read and write
+    public boolean isExternalStorageWritable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            return true;
+        }
+        return false;
+    }
+
+    // Check if external storage is available for at least read
+    public boolean isExternalStorageReadable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState())) {
+            return true;
+        }
+        return false;
+    }
 
 }
