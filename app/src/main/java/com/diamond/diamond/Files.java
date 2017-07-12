@@ -17,7 +17,7 @@ public class Files extends AppCompatActivity {
     // Tag to log
     //private static final String FILES_TAG = "tag.files";
     // Array of TextView to display the directory list
-    public TextView[] directoriesView = {null};
+    public TextView[] directoriesView;
     // Array of TextView to display properties of rootFiles
     public TextView[] propertiesView;
     // Array of String to store properties
@@ -63,14 +63,19 @@ public class Files extends AppCompatActivity {
         // This is to update the external board
         TextView exRead = (TextView) findViewById(R.id.exRead);
         TextView exWrite = (TextView) findViewById(R.id.exWrite);
+        TextView exEmulated = (TextView) findViewById(R.id.exEmulated);
 
         String exReadable = exRead.getText().toString();
-        exReadable = (isExternalStorageReadable()) ? exReadable + " Readable" : exReadable + " Not Readable";
+        exReadable += (isExternalStorageReadable()) ?  " Readable" : " Not Readable";
         exRead.setText(exReadable);
 
         String exWritable = exWrite.getText().toString();
-        exWritable = (isExternalStorageWritable()) ? exWritable + " Mounted" : exWritable + " Not Mounted";
+        exWritable += (isExternalStorageWritable()) ?  " Mounted" : " Not Mounted";
         exWrite.setText(exWritable);
+
+        String emulated = exEmulated.getText().toString();
+        emulated += (Environment.isExternalStorageEmulated())?  " Emulated" : " Not Emulated";
+        exEmulated.setText(emulated);
     }
 
 
