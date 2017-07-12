@@ -1,15 +1,17 @@
 package com.diamond.diamond;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
@@ -19,7 +21,7 @@ import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
 public class Files extends AppCompatActivity {
 
     // Tag to log
-    //private static final String FILES_TAG = "tag.files";
+    private static final String FILES_TAG = "tag.files";
     // Array of TextView to display the directory list
     public TextView[] directoriesView;
     // Array of TextView to display properties of rootFiles
@@ -64,17 +66,46 @@ public class Files extends AppCompatActivity {
             }
         }
 
+        // These are cache details
+        File internalCacheDir = this.getCacheDir();
+        File externalCacheDir = this.getExternalCacheDir();
+        String internalCacheName = "internalCacheText2";
+        String externalCacheName = "externalCacheText";
+
+
         // This is to test if cache some file to internal cache
-        if(this.createCacheFile(this.getFilesDir() , "testCache2.txt" )){
+        if(this.createCacheFile(internalCacheDir , internalCacheName )){
             try {
-                FileOutputStream writeInternalCache = openFileOutput(this.getFilesDir().toString() + "testCache.txt", Context.MODE_PRIVATE);
-                writeInternalCache.write("this is cache data \n ".getBytes());
-                Toast.makeText(getBaseContext() , "Wrote to testCache.txt" , Toast.LENGTH_LONG).show();
+                File file = new File(this.getCacheDir(), internalCacheName);
+                FileWriter cache = new FileWriter(file.getAbsoluteFile());
+                BufferedWriter bw = new BufferedWriter(cache);
+                bw.write("this is the internal cache content \n this is line 2 \n this is line 3");
+                bw.close();
+
+                Log.i(FILES_TAG , "(internal) Just wrote to " + internalCacheDir.toString() + internalCacheName);
+
+                Log.i(FILES_TAG , "(internal) Just read  from " + internalCacheDir.toString() + internalCacheName);
+                FileReader cacheReader = new FileReader(file.getAbsoluteFile());
+                BufferedReader br = new BufferedReader(cacheReader);
+
+                String cacheData;
+                String finalCacheData = "";
+                while ((cacheData = br.readLine()) != null){
+                        finalCacheData += cacheData + "\n";
+                }
+
+                Log.i(FILES_TAG , finalCacheData);
+
+
+                br.close();
+
+
             }catch (Exception e){
                 e.printStackTrace();
+                Log.e(FILES_TAG , "Failed to write to internal cache file.");
             }
         }else{
-            Toast.makeText(getBaseContext() , "Failed to create internal catch!" , Toast.LENGTH_LONG).show();
+            Log.e(FILES_TAG , "Failed to create internal cache file.");
         }
 
         // This is to update the external board
@@ -156,7 +187,7 @@ public class Files extends AppCompatActivity {
         try {
             if(path.exists()) {
                 path = File.createTempFile(cacheFileName, null, path);
-                Toast.makeText(getBaseContext() , "Just created " + path.toString() + cacheFileName , Toast.LENGTH_LONG).show();
+                Log.i(FILES_TAG , "Just created " + path.toString() + cacheFileName);
                 return true;
             }else{
                 return false;
