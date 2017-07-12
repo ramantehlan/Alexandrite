@@ -11,6 +11,7 @@ import java.io.File;
 import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
 import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
 
+
 public class Files extends AppCompatActivity {
 
     // Tag to log
@@ -43,19 +44,19 @@ public class Files extends AppCompatActivity {
 
         properties = new String[]{"internal", "external", "external"};
 
-        rootFiles = new File[]{ this.getFilesDir().getParentFile(),
+        rootFiles = new File[]{this.getFilesDir().getParentFile(),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
 
         for (int i = 0; i < rootFiles.length; i++) {
-            if(properties[i].equals("external")){
-                if(this.isExternalStorageReadable()){
+            if (properties[i].equals("external")) {
+                if (this.isExternalStorageReadable()) {
                     this.displayDirectoryTree(i);
-                }else {
+                } else {
                     directoriesView[i].setText(getResources().getText(R.string.external_storage_error));
                 }
-            }else {
+            } else {
                 this.displayDirectoryTree(i);
             }
         }
@@ -105,15 +106,15 @@ public class Files extends AppCompatActivity {
 
     // Check if external storage is available for read and write
     public boolean isExternalStorageWritable() {
-        return  (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()));
+        return (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()));
     }
 
     // Check if external storage is available for at least read
     public boolean isExternalStorageReadable() {
-       return (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()));
+        return (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || Environment.MEDIA_MOUNTED_READ_ONLY.equals(Environment.getExternalStorageState()));
     }
 
-    public void displayDirectoryTree(int position){
+    public void displayDirectoryTree(int position) {
         // To display the directories of rootFile by calling displayDirectoryTree function
         directoriesView[position].setText(this.getDirectoryTree(rootFiles[position].toString()));
 
