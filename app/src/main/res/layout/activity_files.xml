@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.diamond.diamond.Files">
+    tools:context="com.diamond.diamond.Files"
+    android:focusableInTouchMode="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
@@ -32,7 +33,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:focusableInTouchMode="false" />
 
         <EditText
             android:id="@+id/editText2"
@@ -243,7 +245,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="125dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
@@ -256,6 +258,15 @@
                 app:layout_constraintLeft_toLeftOf="@+id/mainTitle"
                 app:layout_constraintRight_toRightOf="@+id/mainTitle"
                 app:layout_constraintTop_toBottomOf="@+id/mainTitle">
+
+                <TextView
+                    android:id="@+id/exEmulated"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/external_emulated"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/exWrite"

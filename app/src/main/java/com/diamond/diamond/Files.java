@@ -31,7 +31,6 @@ public class Files extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_files);
 
-
         directoriesView = new TextView[]{(TextView) findViewById(R.id.localDirectoryTree),
                 (TextView) findViewById(sdPrivateDirectoryTree),
                 (TextView) findViewById(sdPublicDirectoryTree)
@@ -44,7 +43,7 @@ public class Files extends AppCompatActivity {
 
         properties = new String[]{"internal", "external", "external"};
 
-        rootFiles = new File[]{this.getFilesDir().getParentFile(),
+        rootFiles = new File[]{ this.getFilesDir().getParentFile(),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
@@ -70,7 +69,7 @@ public class Files extends AppCompatActivity {
         exRead.setText(exReadable);
 
         String exWritable = exWrite.getText().toString();
-        exWritable = (isExternalStorageWritable()) ? exWritable + " Writable" : exWritable + " Not Writable";
+        exWritable = (isExternalStorageWritable()) ? exWritable + " Mounted" : exWritable + " Not Mounted";
         exWrite.setText(exWritable);
     }
 
@@ -81,6 +80,7 @@ public class Files extends AppCompatActivity {
         String[] fileDirs = file.list();
         String list = "";
 
+        if(file.exists() && fileDirs != null){
         // This is to create the list of directories
         for (String tempDirName : fileDirs) {
 
@@ -93,6 +93,7 @@ public class Files extends AppCompatActivity {
             //list += (tempDir.exists()) ? "[Existing]" : "[Non Existing]";
             list += "\n";
 
+        }
         }
 
         // finally return the list of directories

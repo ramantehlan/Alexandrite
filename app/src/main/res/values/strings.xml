@@ -34,8 +34,9 @@
     <string name="sdcard_public">External Public</string>
     <string name="sdcard_private">External Private</string>
 
+    <string name="external_emulated">External Storage Emulated: </string>
     <string name="external_readable">External Readable: </string>
-    <string name="external_writable">External Writable: </string>
+    <string name="external_writable">External Mounted: </string>
     <string name="external_cache">External Cache: </string>
     <string name="internal_cache">Internal Cache: </string>
 
