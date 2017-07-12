@@ -1,12 +1,16 @@
 package com.diamond.diamond;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
 import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
@@ -43,7 +47,7 @@ public class Files extends AppCompatActivity {
 
         properties = new String[]{"internal", "external", "external"};
 
-        rootFiles = new File[]{ this.getFilesDir().getParentFile(),
+        rootFiles = new File[]{ this.getCacheDir(),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
@@ -58,6 +62,19 @@ public class Files extends AppCompatActivity {
             } else {
                 this.displayDirectoryTree(i);
             }
+        }
+
+        // This is to test if cache some file to internal cache
+        if(this.createCacheFile(this.getFilesDir() , "testCache2.txt" )){
+            try {
+                FileOutputStream writeInternalCache = openFileOutput(this.getFilesDir().toString() + "testCache.txt", Context.MODE_PRIVATE);
+                writeInternalCache.write("this is cache data \n ".getBytes());
+                Toast.makeText(getBaseContext() , "Wrote to testCache.txt" , Toast.LENGTH_LONG).show();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            Toast.makeText(getBaseContext() , "Failed to create internal catch!" , Toast.LENGTH_LONG).show();
         }
 
         // This is to update the external board
@@ -132,6 +149,24 @@ public class Files extends AppCompatActivity {
 
         // To print properties
         propertiesView[position].setText(propertiesView[position].getText().toString() + rootFiles[position].toString() + properties[position]);
+    }
+
+    // To create cache file and return boolean
+    public boolean createCacheFile(File path , String cacheFileName){
+        try {
+            if(path.exists()) {
+                path = File.createTempFile(cacheFileName, null, path);
+                Toast.makeText(getBaseContext() , "Just created " + path.toString() + cacheFileName , Toast.LENGTH_LONG).show();
+                return true;
+            }else{
+                return false;
+            }
+        }catch(IOException e){
+            // To print the error
+            // We can also use file to store the error
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }
