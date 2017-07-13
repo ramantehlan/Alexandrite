@@ -37,9 +37,14 @@
     <string name="external_emulated">External Storage Emulated: </string>
     <string name="external_readable">External Readable: </string>
     <string name="external_writable">External Mounted: </string>
-    <string name="external_cache">External Cache: </string>
-    <string name="internal_cache">Internal Cache: </string>
+    <string name="external_cache">Click to check external caching</string>
+    <string name="internal_cache">Click to check internal caching </string>
 
     <string name="external_storage_error">External storage not readable or not attached</string>
+
+    <string name="internalCachingSuccess">Internal Caching Passed!</string>
+    <string name="externalCachingSuccess">External Caching Passed!</string>
+    <string name="internalCachingFailed">Internal Caching Failed!</string>
+    <string name="externalCachingFailed">External Caching Failed!</string>
 
 </resources>

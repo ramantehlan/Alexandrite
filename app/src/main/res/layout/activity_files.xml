@@ -289,21 +289,29 @@
                     tools:layout_editor_absoluteY="346dp" />
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/checkInternal"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
+                    android:background="@color/colorSecondaryLight"
+                    android:onClick="checkInternalCache"
                     android:paddingLeft="8dp"
                     android:paddingTop="4dp"
                     android:text="@string/internal_cache"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorSecondary"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/checkExternal"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
+                    android:background="@color/colorSecondaryLight"
+                    android:onClick="checkExternalCache"
                     android:paddingLeft="8dp"
                     android:paddingTop="4dp"
                     android:text="@string/external_cache"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorSecondary"
                     android:textSize="12sp" />
 
             </LinearLayout>

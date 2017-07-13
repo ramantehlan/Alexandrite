@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static android.util.Log.e;
 import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
 import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
 
@@ -73,19 +74,6 @@ public class Files extends AppCompatActivity {
             }
         }
 
-        // This is to test if cache some file to internal cache
-        if (this.createCacheFile(this.getCacheDir(), "inCacheFile", "this is cache content of internal cache")) {
-            Log.e(FILES_TAG, "Internal cache file created successfully.");
-        } else {
-            Log.e(FILES_TAG, "Failed to create internal cache file.");
-        }
-
-        if(this.createCacheFile(this.getExternalCacheDir() , "exCacheFile" , "this is external cache content")){
-            Log.e(FILES_TAG, "External cache file created successfully");
-        } else {
-            Log.e(FILES_TAG, "Failed to create external cache file.");
-        }
-
 
         // This is to update the external board
         TextView exRead = (TextView) findViewById(R.id.exRead);
@@ -108,6 +96,7 @@ public class Files extends AppCompatActivity {
 
     /**
      * To get list of directories
+     *
      * @param path path of which directory list is requested
      * @return string which contain list of directory list
      */
@@ -143,6 +132,7 @@ public class Files extends AppCompatActivity {
 
     /**
      * To check if external storage is mounted or not
+     *
      * @return boolean
      */
     public boolean isExternalStorageWritable() {
@@ -151,6 +141,7 @@ public class Files extends AppCompatActivity {
 
     /**
      * To if external storage is mounted and readable
+     *
      * @return boolean
      */
     public boolean isExternalStorageReadable() {
@@ -159,6 +150,7 @@ public class Files extends AppCompatActivity {
 
     /**
      * To display directory according to the position
+     *
      * @param position this is the number which specify the index in following arrays
      *                 directoriesView
      *                 propertiesView
@@ -181,21 +173,15 @@ public class Files extends AppCompatActivity {
 
     /**
      * To create a cache file
+     *
      * @param cacheDirectoryPath path of cache directory
-     * @param cacheFileName name of cache file
-     * @param cacheContent content of cache file
+     * @param cacheFileName      name of cache file
      * @return boolean
      */
-    public boolean createCacheFile(File cacheDirectoryPath, String cacheFileName, String cacheContent) {
+    public boolean createCacheFile(File cacheDirectoryPath, String cacheFileName) {
         try {
             if (cacheDirectoryPath.exists()) {
-                cacheDirectoryPath = File.createTempFile(cacheFileName, null, cacheDirectoryPath);
-                File cacheFile = new File(cacheDirectoryPath, cacheFileName);
-
-                FileWriter cacheFileWriter = new FileWriter(cacheFile.getAbsoluteFile());
-                BufferedWriter cacheFileBuffWriter = new BufferedWriter(cacheFileWriter);
-                cacheFileBuffWriter.write(cacheContent);
-                cacheFileBuffWriter.close();
+                File freshCacheFile = File.createTempFile(cacheFileName, null, cacheDirectoryPath);
                 return true;
             } else {
                 return false;
@@ -209,9 +195,36 @@ public class Files extends AppCompatActivity {
     }
 
     /**
-     * To read a cache file
      * @param cacheDirectoryPath path of cache directory
-     * @param cacheFileName name of cache file
+     * @param cacheFileName      name of cache file
+     * @param cacheContent       Content of cache file
+     * @return boolean
+     */
+    public boolean writeCacheFile(File cacheDirectoryPath, String cacheFileName, String cacheContent) {
+        try {
+            File cacheFile = new File(cacheDirectoryPath.toString(), cacheFileName);
+            // Check if cache file we are trying to read exists or not
+            if (cacheFile.exists()) {
+                FileWriter fileWriter = new FileWriter(cacheFile.getAbsoluteFile());
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write(cacheContent);
+                bufferedWriter.close();
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * To read a cache file
+     *
+     * @param cacheDirectoryPath path of cache directory
+     * @param cacheFileName      name of cache file
      * @return content of cache file
      */
     public String readCacheFile(File cacheDirectoryPath, String cacheFileName) {
@@ -219,7 +232,7 @@ public class Files extends AppCompatActivity {
         try {
             cacheDirectoryPath = new File(cacheDirectoryPath, cacheFileName);
             // Check if cache file we are trying to read exists or not
-            if(cacheDirectoryPath.exists()) {
+            if (cacheDirectoryPath.exists()) {
                 FileReader cacheReader = new FileReader(cacheDirectoryPath.getAbsoluteFile());
                 BufferedReader br = new BufferedReader(cacheReader);
 
@@ -229,14 +242,127 @@ public class Files extends AppCompatActivity {
                 }
 
                 br.close();
-            }else{
+            } else {
                 finalCacheData = null;
+                e(FILES_TAG, "file not found- " + cacheDirectoryPath.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
+            e(FILES_TAG, "IOException in reading file");
         }
 
         return finalCacheData;
+    }
+
+    /**
+     * to check caching
+     *
+     * @param storageType where you wanna check caching
+     *                    internal or external
+     * @return boolean
+     */
+    public boolean testCaching(String storageType) {
+
+        String cacheFileName;
+        File cacheFilePath;
+        String content = "this is sample content of a cache file" +
+                "\n just testing out few things";
+
+        boolean create_result;
+        boolean write_result;
+        boolean read_result;
+
+        switch (storageType) {
+            case "internal":
+
+                cacheFileName = "inCache";
+                cacheFilePath = this.getCacheDir();
+
+                if (this.createCacheFile(cacheFilePath, cacheFileName)) {
+                    Log.i(FILES_TAG, "Internal cache file created successfully.");
+                    create_result = true;
+                } else {
+                    e(FILES_TAG, "Failed to create internal cache file.");
+                    create_result = false;
+                }
+
+                if (this.writeCacheFile(cacheFilePath, cacheFileName, content)) {
+                    Log.i(FILES_TAG, "Internal cache file written.");
+                    write_result = true;
+                } else {
+                    e(FILES_TAG, "Failed to write to internal cache file.");
+                    write_result = false;
+                }
+
+                String internalCache = this.readCacheFile(cacheFilePath, cacheFileName);
+
+                if (internalCache != null) {
+                    Log.i(FILES_TAG, internalCache);
+                    read_result = true;
+                } else {
+                    e(FILES_TAG, "Error reading internal cache");
+                    read_result = false;
+                }
+                break;
+            case "external":
+
+                cacheFileName = "enCache";
+                cacheFilePath = this.getExternalCacheDir();
+
+                if (this.createCacheFile(cacheFilePath, cacheFileName)) {
+                    Log.i(FILES_TAG, "External cache file created successfully");
+                    create_result = true;
+                } else {
+                    e(FILES_TAG, "Failed to create external cache file.");
+                    create_result = false;
+                }
+
+                if (this.writeCacheFile(cacheFilePath, cacheFileName, content)) {
+                    Log.i(FILES_TAG, "External cache file written.");
+                    write_result = true;
+                } else {
+                    e(FILES_TAG, "Failed to write to external cache file.");
+                    write_result = false;
+                }
+
+                String externalCache = this.readCacheFile(cacheFilePath, cacheFileName);
+
+                if (externalCache != null) {
+                    Log.i(FILES_TAG, externalCache);
+                    read_result = true;
+                } else {
+                    e(FILES_TAG, "Error reading external cache");
+                    read_result = false;
+                }
+
+                break;
+            default:
+                Log.e(FILES_TAG, "Wrong storageType in testCaching");
+                create_result = false;
+                write_result = false;
+                read_result = false;
+                break;
+        }
+
+        return (create_result && write_result && read_result);
+    }
+
+    public void checkInternalCache() {
+        TextView display = (TextView) findViewById(R.id.checkInternal);
+        if (this.testCaching("internal")) {
+            display.setText(getResources().getString(R.string.internalCachingSuccess));
+        } else {
+            display.setText(getResources().getString(R.string.internalCachingFailed));
+        }
+    }
+
+    public void checkExternalCache() {
+        TextView display = (TextView) findViewById(R.id.checkExternal);
+        if (this.testCaching("external")) {
+            display.setText(getResources().getString(R.string.externalCachingSuccess));
+        } else {
+            display.setText(getResources().getString(R.string.externalCachingFailed));
+        }
     }
 
 }
