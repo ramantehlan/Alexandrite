@@ -5,7 +5,10 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -57,7 +60,7 @@ public class Files extends AppCompatActivity {
 
         properties = new String[]{"internal", "external", "external"};
 
-        rootFiles = new File[]{this.getCacheDir(),
+        rootFiles = new File[]{ new File("/"),
                 this.getExternalFilesDir(null).getParentFile(),
                 Environment.getExternalStorageDirectory()
         };
@@ -75,6 +78,27 @@ public class Files extends AppCompatActivity {
         }
 
 
+        TextView cachingTestInternal = (TextView) findViewById(R.id.checkInternal);
+        TextView cachingTestExternal = (TextView) findViewById(R.id.checkExternal);
+
+        cachingTestInternal.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        checkInternalCache();
+                    }
+                }
+        );
+
+        cachingTestExternal.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        checkExternalCache();
+                    }
+                }
+        );
+
         // This is to update the external board
         TextView exRead = (TextView) findViewById(R.id.exRead);
         TextView exWrite = (TextView) findViewById(R.id.exWrite);
@@ -91,6 +115,31 @@ public class Files extends AppCompatActivity {
         String emulated = exEmulated.getText().toString();
         emulated += (Environment.isExternalStorageEmulated()) ? " Emulated" : " Not Emulated";
         exEmulated.setText(emulated);
+
+
+        // This is to create file according to the name
+        Button save = (Button) findViewById(R.id.saveFile);
+
+        save.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TextView newFileName = (TextView) findViewById(R.id.newFileName);
+                        TextView newFileContent = (TextView) findViewById(R.id.newFileContent);
+                        Log.i(FILES_TAG , "File Name - " + newFileName.getText().toString() + " File Content - " + newFileContent.getText().toString());
+
+                        if(newFileName.getText().toString().equals("") || newFileContent.getText().toString().equals("")){
+                            Toast.makeText(getBaseContext() , "No Field can be empty" , Toast.LENGTH_SHORT).show();
+                        }else {
+                            writeCacheFile(getFilesDir(), newFileName.getText().toString(), newFileContent.getText().toString());
+                        }
+                    }
+                }
+        );
+
+
+        Toast.makeText(getBaseContext() , "Reading test3.txt " + readCacheFile(getFilesDir(), "test3.txt") , Toast.LENGTH_LONG).show();
+
     }
 
 
@@ -113,6 +162,7 @@ public class Files extends AppCompatActivity {
                 list += "- " + tempDirName;
                 list += (tempDir.isDirectory()) ? "[Dir]" : "";
                 list += (tempDir.isFile()) ? "[File]" : "";
+                list += (tempDir.isAbsolute())? "[Absolute]" : "";
                 list += (tempDir.canRead()) ? "[R]" : "[NR]";
                 //list += (tempDir.isHidden()) ? "[Hidden]" : "[Not Hidden]";
                 //list += (tempDir.exists()) ? "[Existing]" : "[Non Existing]";
@@ -182,6 +232,7 @@ public class Files extends AppCompatActivity {
         try {
             if (cacheDirectoryPath.exists()) {
                 File freshCacheFile = File.createTempFile(cacheFileName, null, cacheDirectoryPath);
+                Log.i(FILES_TAG , "creating " + freshCacheFile.toString());
                 return true;
             } else {
                 return false;
@@ -202,20 +253,25 @@ public class Files extends AppCompatActivity {
      */
     public boolean writeCacheFile(File cacheDirectoryPath, String cacheFileName, String cacheContent) {
         try {
-            File cacheFile = new File(cacheDirectoryPath.toString(), cacheFileName);
+            File cacheFile = new File(cacheDirectoryPath, cacheFileName);
             // Check if cache file we are trying to read exists or not
-            if (cacheFile.exists()) {
+            if (cacheDirectoryPath.exists()) {
                 FileWriter fileWriter = new FileWriter(cacheFile.getAbsoluteFile());
+
+                Log.i(FILES_TAG , "Writing to " + cacheFile.getAbsoluteFile());
+
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write(cacheContent);
                 bufferedWriter.close();
                 return true;
             } else {
+                Log.e(FILES_TAG, "file not found while writing - " + cacheDirectoryPath.toString());
                 return false;
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e(FILES_TAG, "IOException in Writing file");
             return false;
         }
     }
@@ -230,11 +286,13 @@ public class Files extends AppCompatActivity {
     public String readCacheFile(File cacheDirectoryPath, String cacheFileName) {
         String finalCacheData = "";
         try {
-            cacheDirectoryPath = new File(cacheDirectoryPath, cacheFileName);
+            File cacheFile = new File(cacheDirectoryPath, cacheFileName);
             // Check if cache file we are trying to read exists or not
             if (cacheDirectoryPath.exists()) {
-                FileReader cacheReader = new FileReader(cacheDirectoryPath.getAbsoluteFile());
+                FileReader cacheReader = new FileReader(cacheFile.getAbsoluteFile());
                 BufferedReader br = new BufferedReader(cacheReader);
+
+                Log.i(FILES_TAG , "Reading from " + cacheFile.getAbsoluteFile());
 
                 String cacheDataLine;
                 while ((cacheDataLine = br.readLine()) != null) {
@@ -244,11 +302,11 @@ public class Files extends AppCompatActivity {
                 br.close();
             } else {
                 finalCacheData = null;
-                e(FILES_TAG, "file not found- " + cacheDirectoryPath.toString());
+                Log.e(FILES_TAG, "file not found while reading - " + cacheDirectoryPath.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
-            e(FILES_TAG, "IOException in reading file");
+            Log.e(FILES_TAG, "IOException in reading file");
         }
 
         return finalCacheData;
