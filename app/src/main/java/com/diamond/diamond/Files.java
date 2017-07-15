@@ -61,7 +61,7 @@ public class Files extends AppCompatActivity {
         properties = new String[]{"internal", "external", "external"};
 
         rootFiles = new File[]{ new File("/storage/sdcard0").getAbsoluteFile(),
-                new File("/storage/sdcard1").getAbsoluteFile() , // this.getExternalFilesDir(null).getParentFile().getAbsoluteFile(),
+                this.getExternalFilesDir(null).getParentFile().getAbsoluteFile(),
                 Environment.getExternalStorageDirectory().getAbsoluteFile()
         };
 
