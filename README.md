@@ -7,7 +7,7 @@ This experiment/test is done to get a better *grip on development* and finding c
 # Installation
 You can download the complete source code and import it in `Android Studio 2.3.3` or above version.
 
-> Also you can just download the **.apk** file and install on your mobile device.
+> Also you can just download the **[.apk](https://github.com/ramantehlan/Alexandrite/releases/latest)** file and install on your mobile device.
 
 
 
