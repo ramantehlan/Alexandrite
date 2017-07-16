@@ -1,4 +1,4 @@
-package com.diamond.diamond;
+package com.diamond.alexandrite;
 
 
 import android.app.Fragment;
@@ -20,22 +20,22 @@ public class FragDisplayPreferences extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_display_preferences , container , false);
+        View view = inflater.inflate(com.diamond.alexandrite.R.layout.frag_display_preferences , container , false);
 
-        value1View = (TextView) view.findViewById(R.id.value1View);
-        value2View = (TextView) view.findViewById(R.id.value2View);
-        value3View = (TextView) view.findViewById(R.id.value3View);
+        value1View = (TextView) view.findViewById(com.diamond.alexandrite.R.id.value1View);
+        value2View = (TextView) view.findViewById(com.diamond.alexandrite.R.id.value2View);
+        value3View = (TextView) view.findViewById(com.diamond.alexandrite.R.id.value3View);
 
         // This is to read shared preferences
 
         // For single
         SharedPreferences singlePref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String value1 = singlePref.getString(getString(R.string.value_1_id) , getString(R.string.no_data));
+        String value1 = singlePref.getString(getString(com.diamond.alexandrite.R.string.value_1_id) , getString(com.diamond.alexandrite.R.string.no_data));
 
         // For multiple
-        SharedPreferences multiplePref = getActivity().getSharedPreferences(getString(R.string.multiple_preference_id) , Context.MODE_PRIVATE);
-        String value2 = multiplePref.getString(getString(R.string.value_2_id) , getString(R.string.no_data));
-        String value3 = multiplePref.getString(getString(R.string.value_3_id) , getString(R.string.no_data));
+        SharedPreferences multiplePref = getActivity().getSharedPreferences(getString(com.diamond.alexandrite.R.string.multiple_preference_id) , Context.MODE_PRIVATE);
+        String value2 = multiplePref.getString(getString(com.diamond.alexandrite.R.string.value_2_id) , getString(com.diamond.alexandrite.R.string.no_data));
+        String value3 = multiplePref.getString(getString(com.diamond.alexandrite.R.string.value_3_id) , getString(com.diamond.alexandrite.R.string.no_data));
 
         value1View.setText(value1);
         value2View.setText(value2);

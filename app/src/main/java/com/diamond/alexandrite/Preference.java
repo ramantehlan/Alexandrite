@@ -1,4 +1,4 @@
-package com.diamond.diamond;
+package com.diamond.alexandrite;
 
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -11,10 +11,10 @@ public class Preference extends AppCompatActivity implements FragInputPreference
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preference);
+        setContentView(com.diamond.alexandrite.R.layout.activity_preference);
 
         // Check if frame layout exist or not
-        if (findViewById(R.id.inputFragment) != null) {
+        if (findViewById(com.diamond.alexandrite.R.id.inputFragment) != null) {
 
             // However, if we're being restored from a previous state,
             // Then we don't need to do anything and should just return,
@@ -27,7 +27,7 @@ public class Preference extends AppCompatActivity implements FragInputPreference
             inputPreferences.setArguments(getIntent().getExtras());
             FragmentTransaction fragInput = getFragmentManager().beginTransaction();
 
-            fragInput.add(R.id.inputFragment, inputPreferences);
+            fragInput.add(com.diamond.alexandrite.R.id.inputFragment, inputPreferences);
             fragInput.commit();
 
 
@@ -35,7 +35,7 @@ public class Preference extends AppCompatActivity implements FragInputPreference
 
 
         // Check if frame layout exist or not
-        if(findViewById(R.id.displayFragment) != null){
+        if(findViewById(com.diamond.alexandrite.R.id.displayFragment) != null){
 
             // However, if we're being restored from a previous state,
             // Then we don't need to do anything and should just return,
@@ -48,7 +48,7 @@ public class Preference extends AppCompatActivity implements FragInputPreference
             displayPreferences.setArguments(getIntent().getExtras());
             FragmentTransaction fragDisplay = getFragmentManager().beginTransaction();
 
-            fragDisplay.add(R.id.displayFragment,displayPreferences);
+            fragDisplay.add(com.diamond.alexandrite.R.id.displayFragment,displayPreferences);
             fragDisplay.commit();
         }
     }
@@ -58,22 +58,22 @@ public class Preference extends AppCompatActivity implements FragInputPreference
 
         SharedPreferences singlePref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor singleEdit = singlePref.edit();
-        singleEdit.putString(getString(R.string.value_1_id) , value);
+        singleEdit.putString(getString(com.diamond.alexandrite.R.string.value_1_id) , value);
         singleEdit.apply();
 
-        FragDisplayPreferences displayPreferences =  (FragDisplayPreferences) getFragmentManager().findFragmentById(R.id.displayFragment);
+        FragDisplayPreferences displayPreferences =  (FragDisplayPreferences) getFragmentManager().findFragmentById(com.diamond.alexandrite.R.id.displayFragment);
         displayPreferences.displaySinglePreference(value);
     }
 
     @Override
     public void saveMultiplePreferences(String value1, String value2) {
-        SharedPreferences multiplePref = getSharedPreferences(getString(R.string.multiple_preference_id) , Context.MODE_PRIVATE);
+        SharedPreferences multiplePref = getSharedPreferences(getString(com.diamond.alexandrite.R.string.multiple_preference_id) , Context.MODE_PRIVATE);
         SharedPreferences.Editor multipleEdit = multiplePref.edit();
-        multipleEdit.putString(getString(R.string.value_2_id) , value1);
-        multipleEdit.putString(getString(R.string.value_3_id) , value2);
+        multipleEdit.putString(getString(com.diamond.alexandrite.R.string.value_2_id) , value1);
+        multipleEdit.putString(getString(com.diamond.alexandrite.R.string.value_3_id) , value2);
         multipleEdit.apply();
 
-        FragDisplayPreferences displayPreferences = (FragDisplayPreferences) getFragmentManager().findFragmentById(R.id.displayFragment);
+        FragDisplayPreferences displayPreferences = (FragDisplayPreferences) getFragmentManager().findFragmentById(com.diamond.alexandrite.R.id.displayFragment);
         displayPreferences.displayMultiplePreference(value1 , value2);
     }
 

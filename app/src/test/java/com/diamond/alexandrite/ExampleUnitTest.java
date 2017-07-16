@@ -1,4 +1,4 @@
-package com.diamond.diamond;
+package com.diamond.alexandrite;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.diamond.diamond;
+package com.diamond.alexandrite;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,8 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static android.util.Log.e;
-import static com.diamond.diamond.R.id.sdPrivateDirectoryTree;
-import static com.diamond.diamond.R.id.sdPublicDirectoryTree;
+import static com.diamond.alexandrite.R.id.sdPrivateDirectoryTree;
+import static com.diamond.alexandrite.R.id.sdPublicDirectoryTree;
 
 
 public class Files extends AppCompatActivity {
@@ -46,16 +46,16 @@ public class Files extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_files);
+        setContentView(com.diamond.alexandrite.R.layout.activity_files);
 
-        directoriesView = new TextView[]{(TextView) findViewById(R.id.localDirectoryTree),
+        directoriesView = new TextView[]{(TextView) findViewById(com.diamond.alexandrite.R.id.localDirectoryTree),
                 (TextView) findViewById(sdPrivateDirectoryTree),
                 (TextView) findViewById(sdPublicDirectoryTree)
         };
 
-        propertiesView = new TextView[]{(TextView) findViewById(R.id.subTitle),
-                (TextView) findViewById(R.id.subTitle2),
-                (TextView) findViewById(R.id.subTitle3)
+        propertiesView = new TextView[]{(TextView) findViewById(com.diamond.alexandrite.R.id.subTitle),
+                (TextView) findViewById(com.diamond.alexandrite.R.id.subTitle2),
+                (TextView) findViewById(com.diamond.alexandrite.R.id.subTitle3)
         };
 
         properties = new String[]{"internal", "external", "external"};
@@ -70,7 +70,7 @@ public class Files extends AppCompatActivity {
                 if (this.isExternalStorageReadable()) {
                     this.displayDirectoryTree(i);
                 } else {
-                    directoriesView[i].setText(getResources().getText(R.string.external_storage_error));
+                    directoriesView[i].setText(getResources().getText(com.diamond.alexandrite.R.string.external_storage_error));
                 }
             } else {
                 this.displayDirectoryTree(i);
@@ -78,8 +78,8 @@ public class Files extends AppCompatActivity {
         }
 
 
-        TextView cachingTestInternal = (TextView) findViewById(R.id.checkInternal);
-        TextView cachingTestExternal = (TextView) findViewById(R.id.checkExternal);
+        TextView cachingTestInternal = (TextView) findViewById(com.diamond.alexandrite.R.id.checkInternal);
+        TextView cachingTestExternal = (TextView) findViewById(com.diamond.alexandrite.R.id.checkExternal);
 
         cachingTestInternal.setOnClickListener(
                 new View.OnClickListener() {
@@ -100,9 +100,9 @@ public class Files extends AppCompatActivity {
         );
 
         // This is to update the external board
-        TextView exRead = (TextView) findViewById(R.id.exRead);
-        TextView exWrite = (TextView) findViewById(R.id.exWrite);
-        TextView exEmulated = (TextView) findViewById(R.id.exEmulated);
+        TextView exRead = (TextView) findViewById(com.diamond.alexandrite.R.id.exRead);
+        TextView exWrite = (TextView) findViewById(com.diamond.alexandrite.R.id.exWrite);
+        TextView exEmulated = (TextView) findViewById(com.diamond.alexandrite.R.id.exEmulated);
 
         String exReadable = exRead.getText().toString();
         exReadable += (isExternalStorageReadable()) ? " Readable" : " Not Readable";
@@ -118,14 +118,14 @@ public class Files extends AppCompatActivity {
 
 
         // This is to create file according to the name
-        Button save = (Button) findViewById(R.id.saveFile);
+        Button save = (Button) findViewById(com.diamond.alexandrite.R.id.saveFile);
 
         save.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        TextView newFileName = (TextView) findViewById(R.id.newFileName);
-                        TextView newFileContent = (TextView) findViewById(R.id.newFileContent);
+                        TextView newFileName = (TextView) findViewById(com.diamond.alexandrite.R.id.newFileName);
+                        TextView newFileContent = (TextView) findViewById(com.diamond.alexandrite.R.id.newFileContent);
                         Log.i(FILES_TAG , "File Name - " + newFileName.getText().toString() + " File Content - " + newFileContent.getText().toString());
 
                         if(newFileName.getText().toString().equals("") || newFileContent.getText().toString().equals("")){
@@ -409,20 +409,20 @@ public class Files extends AppCompatActivity {
     }
 
     public void checkInternalCache() {
-        TextView display = (TextView) findViewById(R.id.checkInternal);
+        TextView display = (TextView) findViewById(com.diamond.alexandrite.R.id.checkInternal);
         if (this.testCaching("internal")) {
-            display.setText(getResources().getString(R.string.internalCachingSuccess));
+            display.setText(getResources().getString(com.diamond.alexandrite.R.string.internalCachingSuccess));
         } else {
-            display.setText(getResources().getString(R.string.internalCachingFailed));
+            display.setText(getResources().getString(com.diamond.alexandrite.R.string.internalCachingFailed));
         }
     }
 
     public void checkExternalCache() {
-        TextView display = (TextView) findViewById(R.id.checkExternal);
+        TextView display = (TextView) findViewById(com.diamond.alexandrite.R.id.checkExternal);
         if (this.testCaching("external")) {
-            display.setText(getResources().getString(R.string.externalCachingSuccess));
+            display.setText(getResources().getString(com.diamond.alexandrite.R.string.externalCachingSuccess));
         } else {
-            display.setText(getResources().getString(R.string.externalCachingFailed));
+            display.setText(getResources().getString(com.diamond.alexandrite.R.string.externalCachingFailed));
         }
     }
 

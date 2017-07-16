@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.diamond.diamond">
+    package="com.diamond.alexandrite">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Home"
+            android:name="com.diamond.alexandrite.Home"
             android:theme="@style/HomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,23 +21,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Preference"
+            android:name="com.diamond.alexandrite.Preference"
             android:label="@string/preferences"
-            android:parentActivityName=".Home">
+            android:parentActivityName="com.diamond.alexandrite.Home">
 
             <!-- for pre api 16 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Home"></meta-data>
+                android:value="com.diamond.alexandrite.Home"></meta-data>
         </activity>
         <activity
-            android:name=".Files"
+            android:name="com.diamond.alexandrite.Files"
             android:label="@string/files"
-            android:parentActivityName=".Home">
+            android:parentActivityName="com.diamond.alexandrite.Home">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Home"></meta-data>
+                android:value="com.diamond.alexandrite.Home"></meta-data>
 
         </activity>
     </application>
