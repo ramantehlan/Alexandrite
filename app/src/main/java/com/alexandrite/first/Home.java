@@ -1,4 +1,4 @@
-package com.diamond.alexandrite;
+package com.alexandrite.first;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.diamond.alexandrite.R.layout.activity_home);
+        setContentView(com.alexandrite.first.R.layout.activity_home);
     }
 
     public void goToPreferences(View view) {

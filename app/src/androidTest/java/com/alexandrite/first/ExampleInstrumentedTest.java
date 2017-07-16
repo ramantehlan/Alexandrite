@@ -1,4 +1,4 @@
-package com.diamond.alexandrite;
+package com.alexandrite.first;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

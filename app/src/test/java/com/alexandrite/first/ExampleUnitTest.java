@@ -1,4 +1,4 @@
-package com.diamond.alexandrite;
+package com.alexandrite.first;
 
 import org.junit.Test;
 

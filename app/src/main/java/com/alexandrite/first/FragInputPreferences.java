@@ -1,4 +1,4 @@
-package com.diamond.alexandrite;
+package com.alexandrite.first;
 
 
 import android.app.Activity;
@@ -37,14 +37,14 @@ public class FragInputPreferences extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(com.diamond.alexandrite.R.layout.frag_input_preferences , container , false);
+        View view = inflater.inflate(com.alexandrite.first.R.layout.frag_input_preferences , container , false);
 
-            value1Text = (EditText) view.findViewById(com.diamond.alexandrite.R.id.value1Text);
-            value2Text = (EditText) view.findViewById(com.diamond.alexandrite.R.id.value2Text);
-            value3Text = (EditText) view.findViewById(com.diamond.alexandrite.R.id.value3Text);
+            value1Text = (EditText) view.findViewById(com.alexandrite.first.R.id.value1Text);
+            value2Text = (EditText) view.findViewById(com.alexandrite.first.R.id.value2Text);
+            value3Text = (EditText) view.findViewById(com.alexandrite.first.R.id.value3Text);
 
-        Button saveSingleButton = (Button) view.findViewById(com.diamond.alexandrite.R.id.saveSingleButton);
-        Button saveMultipleButton = (Button) view.findViewById(com.diamond.alexandrite.R.id.saveMultipleButton);
+        Button saveSingleButton = (Button) view.findViewById(com.alexandrite.first.R.id.saveSingleButton);
+        Button saveMultipleButton = (Button) view.findViewById(com.alexandrite.first.R.id.saveMultipleButton);
 
         saveSingleButton.setOnClickListener(
                 new View.OnClickListener() {
