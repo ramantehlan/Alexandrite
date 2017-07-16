@@ -1,5 +1,5 @@
-# #1 Alexandrite
-**Alexandrite** is a *android app*, which exploiting all the methods to save files/data/information on a device.
+# #1 Diamond
+**Diamond** is a *android app*, which exploiting all the methods to save files/data/information on a device.
 
 This app is just for *testing and experimenting* current methods of saving files/data/information.
 This experiment/test is done to get a better *grip on development* and finding creating ways to do old-school jobs.

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Diamond</string>
+    <string name="app_name">Alexandrite</string>
     <string name="menu">Menu</string>
     <string name="preferences">SharedPreferences</string>
     <string name="databases">Databases</string>
