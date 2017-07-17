@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alexandrite.first">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.alexandrite.first.Home"
+            android:name=".Home"
             android:theme="@style/HomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,24 +21,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.alexandrite.first.Preference"
+            android:name=".Preference"
             android:label="@string/preferences"
-            android:parentActivityName="com.alexandrite.first.Home">
+            android:parentActivityName=".Home">
 
             <!-- for pre api 16 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexandrite.first.Home"></meta-data>
+                android:value="com.alexandrite.first.Home" />
         </activity>
         <activity
-            android:name="com.alexandrite.first.Files"
+            android:name=".Files"
             android:label="@string/files"
-            android:parentActivityName="com.alexandrite.first.Home">
-
+            android:parentActivityName=".Home">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.alexandrite.first.Home"></meta-data>
-
+                android:value="com.alexandrite.first.Home" />
+        </activity>
+        <activity
+            android:name=".Databases"
+            android:label="@string/databases"
+            android:parentActivityName=".Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.alexandrite.first.Home" />
         </activity>
     </application>
 

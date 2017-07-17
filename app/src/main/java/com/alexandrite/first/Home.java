@@ -19,6 +19,8 @@ public class Home extends AppCompatActivity {
     }
 
     public void goToDatabases(View view) {
+        Intent preferencesIntent = new Intent(this, Databases.class);
+        startActivity(preferencesIntent);
     }
 
     public void goToFiles(View view) {
