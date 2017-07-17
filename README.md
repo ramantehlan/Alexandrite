@@ -1,4 +1,4 @@
-# #1 Alexandrite
+# Alexandrite
 **Alexandrite** is a *android app*, which exploiting all the methods to save files/data/information on a device.
 
 This app is just for *testing and experimenting* current methods of saving files/data/information.
