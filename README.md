@@ -1,13 +1,10 @@
 # Alexandrite
-**Alexandrite** is a *android app*, which exploiting all the methods to save files/data/information on a device.
-
-This app is just for *testing and experimenting* current methods of saving files/data/information.
-This experiment/test is done to get a better *grip on development* and finding creating ways to do old-school jobs.
+**Alexandrite** is a *android app*, which save data on the device, whether it's temporary files, downloaded app assets, user media, structured data, or something else. This app is just for *testing* **[saving data](https://developer.android.com/training/basics/data-storage/index.html)**.
 
 # Installation
 You can download the complete source code and import it in `Android Studio 2.3.3` or above version.
 
-> Also you can just download the **[.apk](https://github.com/ramantehlan/Alexandrite/releases/latest)** file and install on your mobile device.
+> Also you can just download the **[.apk](https://github.com/ramantehlan/Alexandrite/releases/latest)** file.
 
 
 
