@@ -25,4 +25,9 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL(ContractFeed.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        super.onDowngrade(db, oldVersion, newVersion);
+    }
 }
