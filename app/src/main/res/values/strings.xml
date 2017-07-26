@@ -47,4 +47,6 @@
     <string name="internalCachingFailed">Internal Caching Failed!</string>
     <string name="externalCachingFailed">External Caching Failed!</string>
 
+    <string name="feed_form_title">Create Database Feed</string>
+
 </resources>
