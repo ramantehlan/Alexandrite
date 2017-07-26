@@ -1,3 +1,5 @@
+![App icon](https://ramantehlan.github.io/Alexandrite/app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+
 # Alexandrite
 **Alexandrite** is a *android app*, which save data on the device, whether it's temporary files, downloaded app assets, user media, structured data, or something else. This app is just for *testing* **[saving data](https://developer.android.com/training/basics/data-storage/index.html)**.
 
