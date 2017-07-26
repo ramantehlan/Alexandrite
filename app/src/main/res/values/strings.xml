@@ -48,5 +48,7 @@
     <string name="externalCachingFailed">External Caching Failed!</string>
 
     <string name="feed_form_title">Create Database Feed</string>
+    <string name="title">Title</string>
+    <string name="subtitle">Sub-Title</string>
 
 </resources>
