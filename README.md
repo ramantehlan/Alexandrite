@@ -15,3 +15,8 @@ You can download the complete source code and import it in `Android Studio 2.3.3
 #### What's in it for you
 
 If you are new to android and want to have all the basic examples of  **[Android Data Storage](https://developer.android.com/training/basics/data-storage/index.html)**, then this repository is for you.
+
+# Screenshots
+
+![Capture 1](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture.JPG) ![Capture 2](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture2.JPG)
+![Capture 3](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture3.JPG) ![Capture 4](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture4.JPG)
