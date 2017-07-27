@@ -18,5 +18,7 @@ If you are new to android and want to have all the basic examples of  **[Android
 
 # Screenshots
 
-![Capture 1](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture.JPG) ![Capture 2](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture2.JPG)
-![Capture 3](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture3.JPG) ![Capture 4](https://ramantehlan.github.io/Alexandrite/app/src/main/Capture4.JPG)
+![Capture 1](https://ramantehlan.github.io/Alexandrite/app/src/main/capture.JPG) 
+![Capture 2](https://ramantehlan.github.io/Alexandrite/app/src/main/capture2.JPG)
+![Capture 3](https://ramantehlan.github.io/Alexandrite/app/src/main/capture3.JPG) 
+![Capture 4](https://ramantehlan.github.io/Alexandrite/app/src/main/capture4.JPG)
