@@ -12,7 +12,7 @@ You can download the complete source code and import it in `Android Studio 2.3.3
 
 #### You probably don't want to read it
 
-*This is my first repository on GitHub*. Basically, I decided to create Alexandrite just to implement all the methods of  **[Android Data Storage](https://developer.android.com/training/basics/data-storage/index.html)** training section, since it was missing a full example to showcase all the methods and another reason was to simply test out file storage in Android.
+*This is my first repository on GitHub*. Basically, I decided to create Alexandrite just to implement all the methods of  **[Android Data Storage](https://developer.android.com/training/basics/data-storage/index.html)**, since it was missing proper example to showcase all the methods and another reason was to simply test out file storage in Android.
 
 #### What's in it for you
 
