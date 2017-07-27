@@ -2,6 +2,9 @@ package com.alexandrite.first;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class Databases extends AppCompatActivity {
 
@@ -14,6 +17,24 @@ public class Databases extends AppCompatActivity {
 
         mDbHelper = new FeedReaderDbHelper(this);
 
+        Button saveFeedButton = (Button) findViewById(R.id.saveFeedButton);
+
+        saveFeedButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText title = (EditText) findViewById(R.id.title);
+                        EditText subTitle = (EditText) findViewById(R.id.subTitle);
+
+                        saveFeed(title.getText().toString(), subTitle.getText().toString());
+                    }
+                }
+        );
 
     }
+
+    public void saveFeed(String title, String subTitle) {
+
+    }
+
 }
