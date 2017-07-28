@@ -41,6 +41,11 @@ public class Databases extends AppCompatActivity {
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
+        values.put(ContractFeed.FeedEntry.COLUMN_NAME_TITLE, title);
+        values.put(ContractFeed.FeedEntry.COLUMN_NAME_SUBTITLE, subTitle);
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(ContractFeed.FeedEntry.TABLE_NAME, null, values);
     }
 
 }
