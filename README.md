@@ -14,7 +14,7 @@ You can download the complete source code and import it in `Android Studio 2.3.3
 
 #### What's in it for you
 
-If you are new to android and want to have all the basic examples of  **[Android Data Storage](https://developer.android.com/training/basics/data-storage/index.html)**, then this repository is for you.
+If you are new to android and want to have all the basic examples of  **[Data Storage](https://developer.android.com/training/basics/data-storage/index.html)**, then this repository is for you.
 
 # Screenshots
 
