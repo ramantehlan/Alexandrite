@@ -48,4 +48,6 @@ public class Databases extends AppCompatActivity {
         long newRowId = db.insert(ContractFeed.FeedEntry.TABLE_NAME, null, values);
     }
 
+    // Test commit
+
 }
