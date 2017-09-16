@@ -6,6 +6,14 @@ You can download the complete source code and import it in `Android Studio 2.3.3
 
 > Also you can just download the **[.apk](https://github.com/ramantehlan/Alexandrite/releases/latest)** file.
 
+# Contribution
+
+Feel free to add your own features or improve any current feature, any kind of help is appreciated!
+
+# License
+
+MIT
+
 # Back Story
 
 #### You probably don't want to read it
@@ -18,7 +26,9 @@ If you are new to android and want to have all the basic examples of  **[Data St
 
 # Screenshots
 
-![Capture 1](https://ramantehlan.github.io/Alexandrite/app/src/main/capture.jpg) 
-![Capture 2](https://ramantehlan.github.io/Alexandrite/app/src/main/capture2.jpg)
-![Capture 3](https://ramantehlan.github.io/Alexandrite/app/src/main/capture3.jpg) 
-![Capture 4](https://ramantehlan.github.io/Alexandrite/app/src/main/capture4.jpg)
+<p>
+<img src="https://ramantehlan.github.io/Alexandrite/app/src/main/capture.jpg" width="210">
+<img src="https://ramantehlan.github.io/Alexandrite/app/src/main/capture2.jpg" width="210">
+<img src="https://ramantehlan.github.io/Alexandrite/app/src/main/capture3.jpg" width="210">
+<img src="https://ramantehlan.github.io/Alexandrite/app/src/main/capture4.jpg" width="210">
+</p>
