@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://ramantehlan.github.io/Alexandrite/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
+</p>
+
 # Alexandrite
 **Alexandrite** is an *android app*, which saves data on the device, whether it's temporary files, downloaded app assets, user media, structured data, or something else. This app is just for *testing* **[Android Data Storage](https://developer.android.com/training/basics/data-storage/index.html)** and to include all the examples for that.
 
